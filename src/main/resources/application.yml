@@ -41,6 +41,9 @@ spring:
   jpa:
     hibernate:
       ddl-auto: create
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
 DB: team2project.cryncpn8iv7d.ap-southeast-1.rds.amazonaws.com
 logging:
   level:
