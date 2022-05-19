@@ -33,6 +33,7 @@
                     <form method="POST" th:action="@{/study/{id}/join (id=${study.id})}">
                         <button type="submit" name="submit" value="value" class="btn btn-primary">Join</button>
                     </form>
+                <td th:if="${study.isMember(#authentication.name)==3}">
                     <form method="POST" th:action="@{/study/{id}/delete (id=${study.id})}">
                         <button type="submit" name="submit" value="value" class="btn btn-primary">Delete</button>
                     </form>
