@@ -49,7 +49,7 @@ public class StudyController {
 
 
     }
-    @GetMapping("/")
+    @GetMapping("/study/list")
     public String studyList(Model model){
         List<Study> studies = studyService.selectAllStudy();
         model.addAttribute("studies", studies);
