@@ -45,7 +45,7 @@ public class StudyController {
         study.setLeader(reader);
         studyService.enroll(study,Member.get().getMemberId());
 
-        return "redirect:/";
+        return "studylist";
 
 
     }
@@ -75,7 +75,7 @@ public class StudyController {
         studyService.deleteStudy(study.getId());
         List<Study> studies = studyService.selectAllStudy();
         model.addAttribute("studies", studies);
-        return "redirect:/";
+        return "studylist";
     }
 
 
