@@ -52,7 +52,7 @@ public class StudyController {
     @GetMapping("/")
     public String studyList(Model model){
         List<Study> studies = studyService.selectAllStudy();
-        model.addAttribute("studies",studies);
+        model.addAttribute("studies", studies);
 
         return "studylist";
 
@@ -67,6 +67,15 @@ public class StudyController {
 
         return "redirect:/";
 
+    }
+
+    @DeleteMapping("/study/delete")
+    public String deleteStudy(@PathVariable("studyId") Long studyId, Model model){
+        Study study = studyService.selectStudy(studyId);
+        studyService.deleteStudy(study.getId());
+        List<Study> studies = studyService.selectAllStudy();
+        model.addAttribute("studies", studies);
+        return "redirect:/";
     }
 
 

@@ -13,6 +13,7 @@
                 <th>Start Date</th>
                 <th>Member</th>
                 <th>Join</th>
+                <th>Delete</th>
             </tr>
             <tr th:each="study : ${studies}">
                 <td th:text="${study.leader.getMemberName()}"></td>
@@ -31,6 +32,9 @@
                 <td th:if="${study.isMember(#authentication.name)==3}">
                     <form method="POST" th:action="@{/study/{id}/join (id=${study.id})}">
                         <button type="submit" name="submit" value="value" class="btn btn-primary">Join</button>
+                    </form>
+                    <form method="POST" th:action="@{/study/{id}/join (id=${study.id})}">
+                        <button type="submit" name="submit" value="value" class="btn btn-close">Delete</button>
                     </form>
                 </td>
             </tr>

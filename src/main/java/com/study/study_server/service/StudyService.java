@@ -9,6 +9,8 @@ import com.study.study_server.exception.StudyNotExistException;
 import com.study.study_server.repository.MemberRepository;
 import com.study.study_server.repository.StudyRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -79,4 +81,13 @@ public class StudyService {
         }
     }
 
+    public ResponseEntity<?> deleteStudy(Long study_id){
+        Optional<Study> optionalStudy = studyRepository.findById(study_id);
+        if (optionalStudy.isPresent()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(study_id + " Study Not Found.");
+        }
+        Study existStudy = optionalStudy.get();
+        studyRepository.delete(existStudy);
+        return ResponseEntity.ok("Study Delete Complete");
+    }
 }
