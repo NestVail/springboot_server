@@ -69,7 +69,7 @@ public class StudyController {
 
     }
 
-    @DeleteMapping("/study/delete")
+    @DeleteMapping("/study/{studyId}/delete")
     public String deleteStudy(@PathVariable("studyId") Long studyId, Model model){
         Study study = studyService.selectStudy(studyId);
         studyService.deleteStudy(study.getId());
